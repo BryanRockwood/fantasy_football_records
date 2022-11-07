@@ -1,44 +1,55 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img src="https://www.walpole-ma.gov/sites/g/files/vyhlif1381/f/styles/news_image/public/pages/walpole_sign1.jpg?itok=g2rqfOb1" width="125" height="75" alt="">
+    </a>
     <div class="navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="/" style="text-align:center">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/championships" style="text-align:center">Championships</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/total_regular_season_points" style="text-align:center">All-time regular
-                    season points</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/total_playoff_points" style="text-align:center">All-time playoff points</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/win_percent" style="text-align:center">Win percent</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/playoff_appearances" style="text-align:center">Playoff appearances</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/highest_regular_season" style="text-align:center">Highest season points</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/lowest_regular_season" style="text-align:center">Lowest season points</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/highest_week" style="text-align:center">Highest week points</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/lowest_week" style="text-align:center">Lowest week points</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/highest_loss" style="text-align:center">Highest week loss</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/lowest_win" style="text-align:center">Lowest week win</a>
+            </li>  
+            <li class="nav-item  ">
+                <a class="nav-link" href="/teams" style="text-align:center" >Teams</a>
             </li>
             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" style="text-align:center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">Meet the Owners</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {% for owner in owners %}
+                    <a class="dropdown-item" href="/{{ owner }}" style="text-align:center">{{ owner }}</a>
+                    {% endfor %}
+                </div>    
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" style="text-align:center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">Stats and Records</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/championships" style="text-align:center"> Championships</a>
+                    <a class="dropdown-item" href="/total_regular_season_points" style="text-align:center">All-time regular
+                    season points</a>
+                    <a class="dropdown-item" href="/total_playoff_points" style="text-align:center">All-time playoff points</a>
+                    <a class="dropdown-item" href="/win_percent" style="text-align:center">Win percent</a>
+                    <a class="dropdown-item" href="/playoff_appearances" style="text-align:center">Playoff appearances</a>
+                    <a class="dropdown-item" href="/highest_regular_season" style="text-align:center">Highest season points</a>
+                    <a class="dropdown-item" href="/lowest_regular_season" style="text-align:center">Lowest season points</a>
+                    <a class="dropdown-item" href="/highest_week" style="text-align:center">Highest week points</a>
+                    <a class="dropdown-item" href="/lowest_week" style="text-align:center">Lowest week points</a>
+                    <a class="dropdown-item" href="/highest_loss" style="text-align:center">Highest week loss</a>
+                    <a class="dropdown-item" href="/lowest_win" style="text-align:center">Lowest week win</a>
+                    <a class="dropdown-item" style="text-align: center; font-weight: bold;"> Head to Head Records by Owner</a>
+                    
+                        {% for owner in owners %}
+                        <a class="dropdown-item" href="/head-to-head/{{ owner }}" style="text-align:center; font-size: 12.5px">{{ owner }}</a>
+                        {% endfor %}
+ <!--- 
+    owners loop winth
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        {% for owner in owners %}
+                        <a class="dropdown-item" href="/head-to-head/{{ owner }}" style="text-align:center">{{ owner }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+old o
+         <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown" style="text-align:center">
                     Head-to-head
@@ -48,7 +59,18 @@
                     <a class="dropdown-item" href="/head-to-head/{{ owner }}" style="text-align:center">{{ owner }}</a>
                     {% endfor %}
                 </div>
+                </li>
+                --->
+        </li>
+            <li class="nav-item ">
+                <a class="nav-link" style="text-align: center;">Rulebook</a>
+                
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" style="text-align: center;">Philanthropy</a>
+                
+            </li>
+
         </ul>
     </div>
 </nav>
