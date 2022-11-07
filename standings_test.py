@@ -16,54 +16,80 @@ division4 = [feast, justin, jackson]
 #else :
 #    print("team2 wins")
 #we want to loop through the season
-
-
-#get all games
-weeks = 1
+everyone = [bloom, bannon, bshea, bnelli, rock, kcoins, feast, joe, wians, justin, jose, jackson]
+season = [1, 2, 3, 4, 5, 6, 7, 8]
 matchups = [0,1,2,3,4,5]
-rockTeamDict={}
-rockWins = 0
-rockLoss = 0
-pointFor = 0
-pointAgainst = 0
-divWins = 0
-divLoss = 0
-print("Grabbing Rock's Results....")
-while weeks < 9:
-    weekScore = league.box_scores(weeks)
-    for y in matchups:
-        homeTeam = weekScore[y].home_team
-        awayTeam = weekScore[y].away_team
-        homeTeamScore = weekScore[y].home_score
-        awayTeamScore = weekScore[y].away_score
-        if homeTeam == rock:
-            pointFor = pointFor + homeTeamScore
-            pointAgainst = pointAgainst + awayTeamScore
-            if homeTeamScore > awayTeamScore:
-                rockWins +=1
-                if awayTeam == bannon or awayTeam ==joe:
-                    divWins +=1
-                    print(awayTeam)
-            else:
-                rockLoss +=1
-                if awayTeam == bannon or awayTeam == joe:
-                    divLoss +=1
-        if awayTeam == rock:
-            pointFor = pointFor + awayTeamScore
-            pointAgainst = pointAgainst + homeTeamScore
-            if homeTeamScore > awayTeamScore:
-               rockLoss +=1
-               if homeTeam == bannon or homeTeam == joe:
-                   divLoss += 1
-                   print(homeTeam)
-            else:
-                rockWins += 1
-                if homeTeam == bannon or homeTeam == joe:
-                    divWins += 1
+zDict ={}
+for z in everyone:
+    zwins = 0
+    zloss = 0
+    zdivw = 0
+    zdivl = 0
+    pointFor = 0
+    pointAgainst = 0
+    divWins = 0
+    divLoss = 0
+    for x in season:
+        week = league.box_scores(x)
 
-    weeks+= 1
-rockTeamDict.update({"wins": rockWins, "losses":rockLoss, "PointsFor":pointFor, "PointsAgainst": pointAgainst, "DivWins": divWins, "DivLosses": divLoss})
-print(rockTeamDict)
+        for y in matchups:
+            ht = week[y].home_team
+            at = week[y].away_team
+            hts = week[y].home_score
+            ats = week[y].away_score
+#go through each match up, and check if its a divisional game
+            if ht == z:
+                pointFor = pointFor + hts
+                pointAgainst = pointAgainst + ats
+                if hts > ats:
+                    zwins += 1
+                    if ht in division1 and at in division1:
+                        zdivw += 1
+                    if ht in division2 and at in division2:
+                        zdivw
+                    if ht in division3 and at in division3:
+                        zdivw += 1
+                    if ht in division4 and at in division4:
+                        zdivw +=1
+                else:
+                    zloss += 1
+                    if ht in division1 and at in division1:
+                        zdivl += 1
+                    if ht in division2 and at in division2:
+                        zdivl += 1
+                    if ht in division3 and at in division3:
+                        zdivl += 1
+                    if ht in division4 and at in division4:
+                        zdivl +=1
 
-#check week by week
-#we need to compare home team score vs away team score, then store the winner and loser statsw
+            if at == z:
+                pointFor = pointFor + ats
+                pointAgainst = pointAgainst + hts
+                if hts > ats:
+                    zloss += 1
+                    if ht in division1 and at in division1:
+                        zdivl += 1
+                    if ht in division2 and at in division2:
+                        zdivl += 1
+                    if ht in division3 and at in division3:
+                        zdivl += 1
+                    if ht in division4 and at in division4:
+                        zdivl += 1
+                else:
+                    zwins += 1
+                    if ht in division1 and at in division1:
+                        zdivw += 1
+                    if ht in division2 and at in division2:
+                        zdivw += 1
+                    if ht in division3 and at in division3:
+                        zdivw += 1
+                    if ht in division4 and at in division4:
+                        zdivw += 1
+
+    zDict.update(
+        {"wins": zwins, "losses": zloss, "PointsFor": pointFor, "PointsAgainst": pointAgainst, "DivWins": zdivw,
+         "DivLosses": zdivl})
+    print(z, zDict)
+
+
+
